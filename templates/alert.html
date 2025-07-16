@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>알림창</title>
+  <script>
+    const status = "{{status}}";
+    const category = "{{category}}"
+    const post_id = "{{post_id}}"
+
+    if(status == 'login_fail') {
+      window.onload = function() {
+        alert('아이디 또는 비밀번호가 잘못되었습니다.');
+        window.history.back();
+      };
+    } else if(status == 'write_success') {
+      window.onload = function() {
+        alert('기사가 성공적으로 작성되었습니다.')
+        window.location.href = "/news/" + category
+      }
+    } else if(status == 'write_error') {
+      window.onload = function() {
+        alert('에러 발생!')
+        window.history.back();
+      }
+    } else if(status == 'modify_fail') {
+      window.onload = function() {
+        alert('기사 수정중 오류가 발생했습니다.')
+        window.history.back();
+      }
+    } else if(status == 'modify_success') {
+      window.onload = function() {
+        alert('기사가 성공적으로 수정되었습니다.')
+        window.location.href = "/news/" + category + "?post_id=" + post_id
+      }
+    } else if(status == 'delete_fail') {
+      window.onload = function() {
+        alert('기사 삭제중 오류가 발생했습니다.')
+        window.history.back();
+      }
+    } else if(status == 'delete_success') {
+      window.onload = function() {
+        alert('기사가 성공적으로 삭제되었습니다.')
+        window.location.href = "/news/" + category
+      }
+    }
+  </script>
+</head>
+</html>

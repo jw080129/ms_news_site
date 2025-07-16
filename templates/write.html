@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>마석고뉴스: 기사 작성</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding-top: 50px;
+    }
+
+    .container {
+      background-color: white;
+      width: 90%;
+      max-width: 720px;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 25px;
+      font-size: 28px;
+    }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+      color: #34495e;
+      font-size: 15px;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 14px;
+      margin-top: 8px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 15px;
+      background-color: white;
+    }
+
+    textarea {
+      height: 280px;
+      resize: none;
+    }
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .file-label {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 12px 20px;
+      background-color: #95a5a6;
+      color: white;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .file-label:hover {
+      background-color: #7f8c8d;
+    }
+
+    .submit-btn {
+      margin-top: 30px;
+      width: 100%;
+      padding: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 17px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      background-color: #2980b9;
+    }
+
+    /* ✅ 카테고리 텍스트 스타일 */
+    .category-text {
+      margin-top: 20px;
+      font-size: 15px;
+      color: #555;
+    }
+
+    .category-text strong {
+      color: #2c3e50;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>📰 마석고 뉴스 기사 작성</h1>
+    <form action="/news/getWrite" method="post" enctype="multipart/form-data">
+      
+      <!-- 제목 입력 -->
+      <label for="title">기사 제목</label>
+      <input type="text" id="title" name="title" placeholder="제목을 입력하세요" required />
+
+      <!-- ✅ 카테고리 텍스트 표시 -->
+      <p class="category-text">
+        <strong>카테고리: {{category}}</strong>
+        <input type="hidden" name="category" value="{{ category }}">
+      </p>
+
+      <!-- 내용 입력 -->
+      <label for="content">기사 내용</label>
+      <textarea id="content" name="content" placeholder="내용을 입력하세요..." required></textarea>
+
+      <!-- 제출 버튼 -->
+      <button type="submit" class="submit-btn">기사 등록</button>
+    </form>
+  </div>
+</body>
+</html>
